@@ -132,12 +132,15 @@ const executeAnalysis = () => {
     transactionAnalysis.maxSalesValue
   );
   console.log(
-    "Best Sold Product ID by Value:",
+    "Most Sold Product ID by Value:",
     transactionAnalysis.bestSoldProductId
   );
-  console.log("Best Selling Staff ID:", transactionAnalysis.bestSellingStaffId);
   console.log(
-    "Peak Sales Hour of the Day by Transaction Volume:",
+    "Highest Staff ID for Each Month:",
+    transactionAnalysis.bestSellingStaffId
+  );
+  console.log(
+    "Highest Hour of the Day by Average Transaction Volume:",
     transactionAnalysis.peakSalesHourDate
   );
 };
