@@ -1,0 +1,15 @@
+{
+  "name": "dreamdev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fileStore.js",
+  "scripts": {
+    "start": "nodemon 'fileStore.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
