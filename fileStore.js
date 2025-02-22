@@ -132,7 +132,7 @@ const executeAnalysis = () => {
     transactionAnalysis.maxSalesValue
   );
   console.log(
-    "Most Sold Product ID by Value:",
+    "Most Sold Product ID by Volume:",
     transactionAnalysis.bestSoldProductId
   );
   console.log(
