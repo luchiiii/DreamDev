@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-// Directory for the transaction files
+// This is the directory for the transaction files
 const transactionFolder = path.join(__dirname, "transactionFiles");
 
-// Function to get all transaction lines
+// A function to get all the transaction lines from transaction files
 const getTransactionLines = () => {
   let allTransactionLines = [];
   const transactionFiles = fs.readdirSync(transactionFolder);
@@ -20,7 +20,7 @@ const getTransactionLines = () => {
   return allTransactionLines;
 };
 
-// Function to analyze transactions
+// This function analyzes the transaction data
 const analyzeTransaction = (transactionLines) => {
   const salesByDate = {};
   const salesAmountByDate = {};
@@ -40,10 +40,13 @@ const analyzeTransaction = (transactionLines) => {
       totalQuantity += qty;
     }
 
+    // Splitting to extract the date and hour from the transaction time
     const date = time.split("T")[0];
     const hour = time.split("T")[1].split(":")[0];
 
+    // Updating daily sales volume
     salesByDate[date] = (salesByDate[date] || 0) + totalQuantity;
+
     salesAmountByDate[date] = (salesAmountByDate[date] || 0) + amount;
 
     for (const entry of productEntries) {
@@ -54,10 +57,12 @@ const analyzeTransaction = (transactionLines) => {
 
     staffSalesTotal[staffId] = (staffSalesTotal[staffId] || 0) + amount;
 
+    //updating the hourly sales volume
     const hourKey = `${date} ${hour}`;
     hourSales[hourKey] = (hourSales[hourKey] || 0) + totalQuantity;
   }
 
+  //identification of the metrics
   let highestSalesVolume = { date: "", volume: 0 };
   let highestSalesValue = { date: "", value: 0 };
   let bestSoldProduct = { id: "", quantity: 0 };
@@ -85,6 +90,7 @@ const analyzeTransaction = (transactionLines) => {
     }
   }
 
+  //Calculating the average hourly sales volume
   const hourSalesAverage = {};
   for (const key in hourSales) {
     const [date] = key.split(" ");
